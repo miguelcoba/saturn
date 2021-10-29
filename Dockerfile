@@ -39,6 +39,7 @@ COPY lib lib
 RUN mix compile
 
 # copy runtime configuration file
+COPY rel rel
 COPY config/runtime.exs config/
 
 # assemble release
