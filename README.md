@@ -1,5 +1,5 @@
 # Saturn
 
-Sample project from "Deploying Elixir" series:
+Source code for the Elixir/Phoenix project from the "Deploying Elixir" series.
 
-Read the series in [dev.to](https://dev.to/miguelcoba/creating-a-phoenix-application-with-asdf-16km)
+Read the [complete series](https://blog.miguelcoba.com/series/deploying-elixir) in my [blog](https://blog.miguelcoba.com)
