@@ -33,6 +33,7 @@ if config_env() == :prod do
       """
 
   config :saturn, SaturnWeb.Endpoint,
+    url: [host: System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
