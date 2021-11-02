@@ -33,6 +33,7 @@ if config_env() == :prod do
       """
 
   config :saturn, SaturnWeb.Endpoint,
+    url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -48,7 +49,7 @@ if config_env() == :prod do
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-      config :saturn, SaturnWeb.Endpoint, server: true
+  config :saturn, SaturnWeb.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
