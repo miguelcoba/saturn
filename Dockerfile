@@ -11,7 +11,7 @@ WORKDIR /app
 
 # install hex + rebar
 RUN mix local.hex --force && \
-    mix local.rebar --force
+  mix local.rebar --force
 
 ARG MIX_ENV
 ENV MIX_ENV="${MIX_ENV}"
@@ -52,28 +52,26 @@ ARG MIX_ENV
 # install runtime dependencies
 RUN apk add --no-cache libstdc++ openssl ncurses-libs
 
-ENV USER="elixir"
-
-WORKDIR "/home/${USER}/app"
+WORKDIR "/home/elixir/app"
 
 # Create  unprivileged user to run the release
 RUN \
   addgroup \
-   -g 1000 \
-   -S "${USER}" \
+  -g 1000 \
+  -S "elixir" \
   && adduser \
-   -s /bin/sh \
-   -u 1000 \
-   -G "${USER}" \
-   -h "/home/${USER}" \
-   -D "${USER}" \
-  && su "${USER}"
+  -s /bin/sh \
+  -u 1000 \
+  -G "elixir" \
+  -h "/home/elixir" \
+  -D "elixir" \
+  && su "elixir"
 
 # run as user
-USER "${USER}"
+USER "elixir"
 
 # copy release executables
-COPY --from=build --chown="${USER}":"${USER}" /app/_build/"${MIX_ENV}"/rel/saturn ./
+COPY --from=build --chown="elixir":"elixir" /app/_build/"${MIX_ENV}"/rel/saturn ./
 
 ENTRYPOINT ["bin/saturn"]
 
